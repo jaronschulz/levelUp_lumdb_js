@@ -4,35 +4,8 @@ import './App.css';
 
 class App extends Component {
   
-  constructor(props){
-    super(props);
-    console.log('constructor');
-  }
-
-  componentWillMount() {
-    console.log('will mount');
-  }
-  
-  componentDidMount() {
-    console.log('did mount');
-  }
-  
-  componentWillUpdate() {
-    console.log('will update');
-  }
-
-  componentDidUpdate() {
-    console.log('did update');
-  }
-
-  state = {
-    toggle: true
-  }
-  
-  toggle = () => {
-    this.setState({
-      toggle: !this.state.toggle
-    })
+  submit = () => {
+    console.log(this.text.value);
   }
   
   render() {
@@ -45,10 +18,8 @@ class App extends Component {
       <p className="App-intro">
       To get started, edit <code>src/App.js</code> and save to reload.
       </p>
-      {this.state.toggle === true && 
-        <p>This should show and hide</p>
-      }
-      <button onClick={this.toggle} >show / hide</button>
+      <input type="text" ref={ (input) => this.text = input } />
+      <button onClick={this.submit} >Show Value</button>
       </div>
     );
   }
@@ -58,8 +29,7 @@ class App extends Component {
 
 class Welcome extends Component {
   render() {
-    const { text, toggle } = this.props;
-    console.log(toggle);
+    const { text } = this.props;
     return(
       <h1 className="App-title">{text}</h1>
     )
